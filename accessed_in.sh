@@ -10,5 +10,13 @@ if [ $# != 2 ]
     echo "Incorrect number of arguments"
 else
     current_time=$(date +"%s")
-    echo $((current_time))
+    access_time=$(stat -c '%X' $1)
+    dT=$(($current_time - $access_time))
+
+    if [ $(($2 * 60)) -gt $dT ]
+	then
+	exit 0
+    else
+	exit 1
+    fi
 fi
