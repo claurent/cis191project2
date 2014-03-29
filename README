@@ -1,0 +1,22 @@
+1. Charles Laurent
+username: claurent
+
+2. What does scrapper.sh do?
+**************
+
+3. *************
+
+
+4.************
+
+
+5. Accessed in calculates how long since a file has been accessed by converting the "last accessed" time to epoch time and subtracting that time from the current time.
+
+6. For dates before January 1, 1970, Unix represents the dates/times as negative numbers (still from Jan 1, 1970)
+
+7. minutes(0-59), hours(0-23), day of month(1-31), month(1-12), day of week (0-7, sunday is 0 and 7)
+
+8. 15 6 7 May tue echo "OMG YES!!!" will get run at 6:15 am on every May 7th that falls on a Tuesday.
+
+9. Extra Credit:
+**********************
