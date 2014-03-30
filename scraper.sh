@@ -5,7 +5,12 @@
 
 wget -q -O temp $1
 
+#emails
+grep -Eo '[A-Za-z0-9][A-Za-z0-9!#$%&+=?_.]*@[A-Za-z0-9.-]*[.][A-Za-z0-9.-]*' temp >> emails.txt
 
-grep -o '*@*' temp
+# phone numbers
+# XXX-XXX-XXXX OR (XXX) XXX-XXXX
+
+grep -Eo '[0-9][0-9][0-9][-][0-9][0-9][0-9][-][0-9][0-9][0-9][0-9]' temp >> phonenumbers.txt
 
 rm temp
