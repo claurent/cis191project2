@@ -3,6 +3,19 @@
 # extracts all email addresses and phone numbers and appends them to emails.txt and phonenumbers.txt respectively
 # $1 is URL
 
+#iterate through the arguments
+for i in "$@"
+do 
+    case $i in
+	"-f") echo "file, not website";;
+	"-e") echo "emails";;
+	"-p") echo "phonenumbers";;
+
+	*) echo "none";;
+    esac
+done
+
+
 wget -q -O temp $1
 
 #emails
