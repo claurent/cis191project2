@@ -7,23 +7,32 @@
 for i in "$@"
 do 
     case $i in
-	"-f") echo "file, not website";;
-	"-e") echo "emails";;
-	"-p") echo "phonenumbers";;
+	"-f") if [ i != $# ] 
+	    
+	    then
+	    echo $i
+	    grep -Eo '[A-Za-z0-9!#$%&][A-Za-z0-9!#$%&+=?_.]*@[A-Za-z0-9.-]*[.][A-Za-z0-9.-]{1,4}' ${!#} >> emails.txt
+	    grep -Eo '[0-9]{3}[-][0-9]{3}[-][0-9]{4}|[(][0-9]{3}[)][ ]?[0-9]{3}[-][0-9]{3}' ${!#} >> phonenumbers.txt
 
-	*) echo "none";;
+	    fi	    
+	    ;;
+	"-e") echo "emails"
+	    wget -q -O scraper_temp_html_file ${!#}
+	    grep -Eo '[A-Za-z0-9!#$%&][A-Za-z0-9!#$%&+=?_.]*@[A-Za-z0-9.-]*[.][A-Za-z0-9.-]{1,4}' scraper_temp_html_file >> emails.txt
+	    ;;
+	"-p") 
+	    wget -q -O scraper_temp_html_file ${!#}
+	    grep -Eo '[0-9]{3}[-][0-9]{3}[-][0-9]{4}|[(][0-9]{3}[)][ ]?[0-9]{3}[-][0-9]{3}' scraper_temp_html_file >> phonenumbers.txt
+	    ;;
+	*) echo 
     esac
 done
 
 
-wget -q -O temp $1
 
-#emails
-grep -Eo '[A-Za-z0-9][A-Za-z0-9!#$%&+=?_.]*@[A-Za-z0-9.-]*[.][A-Za-z0-9.-]*' temp >> emails.txt
 
 # phone numbers
 # XXX-XXX-XXXX OR (XXX) XXX-XXXX (with or without space)
 
-grep -Eo '[0-9][0-9][0-9][-][0-9][0-9][0-9][-][0-9][0-9][0-9][0-9]|[(][0-9][0-9][0-9][)][ ]?[0-9][0-9][0-9][-][0-9][0-9][0-9][0-9]' temp >> phonenumbers.txt
 
-rm temp
+rm -f scraper_temp_html_file

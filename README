@@ -2,13 +2,12 @@
 username: claurent
 
 2. What does scrapper.sh do?
-**************
+scrapper.sh takes a website (or file path, depending on the flag used) and pulls all of the emails addresses and/or phone numbers.
 
-3. *************
+3. You could write in "at" instead of using the symbol "@" when writing your email address. 
 
 
-4.************
-
+4. One way to circumvent the change is by adding in a check for the word at instead of the symbol.
 
 5. Accessed in calculates how long since a file has been accessed by converting the "last accessed" time to epoch time and subtracting that time from the current time.
 
